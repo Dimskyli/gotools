@@ -4,7 +4,7 @@
 
 1、导入package： 
 ```$xslt
-go get github.com/dimskyli/gotools/mq
+go get github.com/plm-lee/gotools/mq
 ``` 
 
 2、使用连接池：
@@ -15,7 +15,7 @@ go get github.com/dimskyli/gotools/mq
 package main
 
 import (
- "github.com/dimskyli/gotools/mq"
+ "github.com/plm-lee/gotools/mq"
  "log"
 )
 
@@ -67,20 +67,20 @@ func handler(in string) (out string, err error) {
 ## redis
 1、导入package
 ```$xslt
-go get github.com/dimskyli/gotools/redispool
+go get github.com/plm-lee/gotools/redispool
 ```
 
 2、使用redis连接池
 ```go
 var ConnPool *redis.Pool
-var ConnPoolLocalNet *redis.Pool   redispool
+var ConnPoolLocalNet *redis.Pool
 ```
 > redis内部声明了两个连接池，(本地redis连接池及远程连接池，本质上都是一样)
 
 ```go
 package main
 
-import "github.com/dimskyli/gotools/redispool"
+import "github.com/plm-lee/gotools/redispool"
 
 func main()  {
 	//初始化
