@@ -64,3 +64,38 @@ func handler(in string) (out string, err error) {
 ```
 
 
+## redis
+1、导入package
+```$xslt
+go get github.com/dimskyli/gotools/redispool
+```
+
+2、使用redis连接池
+```go
+var ConnPool *redis.Pool
+var ConnPoolLocalNet *redis.Pool   redispool
+```
+> redis内部声明了两个连接池，(本地redis连接池及远程连接池，本质上都是一样)
+
+```go
+package main
+
+import "github.com/dimskyli/gotools/redispool"
+
+func main()  {
+	//初始化
+    redispool.InitConnPool(Addr, Password, Db, MaxIdle)
+    redispool.InitConnPoolLocal(Addr, Password, Db, MaxIdle)
+    
+    //获取连接
+    rc := redispool.ConnPool.Get()
+    defer rc.Close() //使用完记得close
+    
+    //或者
+    rc := redispool.ConnPoolLocalNet.Get()
+    defer rc.Close() //使用完记得close
+    
+    //使用Do()方法
+    rc.Do("RPOP", "key-test")   
+}
+```
