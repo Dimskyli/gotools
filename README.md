@@ -1,13 +1,15 @@
 # gotools
 
-##mq连接池
+## mq连接池
 
 1、导入package： 
 ```$xslt
 go get github.com/dimskyli/gotools/mq
 ``` 
 
-2、初始化：
+2、使用连接池：
+
+>在mq中声明了一个全局的mq连接池，[var ConnPool *Pool], 因此在使用mq包时不需要调用者自己声明，mq包内部会自动从mq池中取空闲的连接
 
 ```go
 package main
